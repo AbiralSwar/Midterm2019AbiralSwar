@@ -9,12 +9,12 @@ public class Student implements Serializable {
 	 */
 	public String firstName;
 	public String lastName;
-	public String score;
+	public int score;
 	public String id;
 
 	public Student(){}
 
-	public Student(String firstName, String lastName, String score, String id) {
+	public Student(String firstName, String lastName, int score, String id) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.score = score;
@@ -36,11 +36,11 @@ public class Student implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public String getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(String score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

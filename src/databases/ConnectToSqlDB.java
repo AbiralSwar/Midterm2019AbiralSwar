@@ -167,11 +167,20 @@ public class ConnectToSqlDB {
             connectToSqlDatabase();
             ps = connect.prepareStatement("DROP TABLE IF EXISTS `"+tableName+"`;");
             ps.executeUpdate();
-            ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`source` VARCHAR(5000) ,`author` VARCHAR(5000) DEFAULT NULL, `title` VARCHAR(5000) DEFAULT NULL,`description` LONGTEXT,`url` LONGTEXT,`urlToImage` LONGTEXT,`publisherAt` LONGTEXT ,`content` LONGTEXT  );");
+            ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`source` VARCHAR(5000) ,`author` VARCHAR(5000) DEFAULT NULL, `title` VARCHAR(5000) DEFAULT NULL,`url` LONGTEXT,`description` LONGTEXT,`urlToImage` LONGTEXT,`publisherAt` LONGTEXT ,`content` LONGTEXT  );");
             ps.executeUpdate();
             for(CnnUtil st:list){
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
-                ps.setObject(1,st.getTitle());
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+"source,author,title,description,url,urlToImage,publisherAt,content"+" ) VALUES(?,?,?,?,?,?,?,?)");
+                ps.setObject(1,st.getSource());
+                ps.setObject(2,st.getAuthor());
+                ps.setObject(3,st.getTitle());
+                ps.setObject(4,st.getDescription());
+                ps.setObject(5,st.getUrl());
+                ps.setObject(6,st.getUrlToImage());
+                ps.setObject(7,st.getPublisherAt());
+                ps.setObject(8,st.getContent());
+
+
                 ps.executeUpdate();
             }
 
@@ -194,8 +203,11 @@ public class ConnectToSqlDB {
             ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`firstName` VARCHAR(5000) ,`lastName` VARCHAR(5000) DEFAULT NULL, `score` VARCHAR(5000) DEFAULT NULL,`id` LONGTEXT );");
             ps.executeUpdate();
             for(Student st:list){
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+"firstName,lastName,score,id"+" ) VALUES(?,?,?,?)");
                ps.setObject(1,st.getFirstName());
+                ps.setObject(2,st.getLastName());
+                ps.setObject(3,st.getScore());
+                ps.setObject(4,st.getId());
                 ps.executeUpdate();
             }
 
@@ -212,7 +224,7 @@ public class ConnectToSqlDB {
         try {
             connectToSqlDatabase();
                 ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
-                ps.setString(1,"Ankita Sing");
+                ps.setString(1,"Abiral");
                 ps.setInt(2,3590);
                 ps.executeUpdate();
 
@@ -231,6 +243,46 @@ public class ConnectToSqlDB {
         List<CnnUtil> list = new ArrayList<CnnUtil>();
         CnnUtil news = new CnnUtil();
         Connection conn = connectToSqlDatabase();
+        try{
+
+            String query = "SELECT * FROM "+tablename;
+            // create the java statement
+            Statement st = conn.createStatement();
+            // execute the query, and get a java resultset
+            ResultSet rs = st.executeQuery(query);
+            // iterate through the java resultset
+            while (rs.next())
+            {
+
+
+                String authorName = rs.getString("author");
+                news.setAuthor(authorName);
+                String title = rs.getString("title");
+                news.setTitle(authorName);
+                String description = rs.getString("description");
+                news.setDescription(authorName);
+                String url = rs.getString("url");
+                news.setUrl(authorName);
+                String urlToImage = rs.getString("urlToImage");
+                news.setUrlToImage(urlToImage);
+
+                String publisherAt = rs.getString("publisherAt");
+                news.setPublisherAt(publisherAt);
+
+                String content = rs.getString("content");
+                news.setContent(content);
+
+
+                list.add(news);
+
+
+
+            }
+            st.close();
+        }catch (Exception e){
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
 
         return list;
     }
@@ -261,7 +313,7 @@ public class ConnectToSqlDB {
                 student.setFirstName(firstName);
                 String lastName = rs.getString("lastName");
                 student.setLastName(lastName);
-                String score = rs.getString("score");
+                int score = rs.getInt("score");
                 student.setScore(score);
                 String id = rs.getString("id");
                 student.setId(id);

@@ -32,13 +32,17 @@ public class UnitTestingStringProblem {
         }
 
         try {//Unit test for palindrome
-            String test = "CVS";
+            String test = "MOM";
             boolean expected = false;
-            Assert.assertEquals(Palindrome.isPalindrome(test),expected);
+            Assert.assertEquals(Palindrome.isPalindrome(test),true);
             System.out.println("Palindrome unit test passed.");
         } catch (AssertionError as){
             System.out.println("Palindrome unit test failed.");
         }
+
+
+
+
     }
     }
 

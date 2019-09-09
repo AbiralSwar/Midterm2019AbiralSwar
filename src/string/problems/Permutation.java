@@ -12,7 +12,7 @@ public class Permutation {
          * Write Java program to compute all Permutation of a String
          *
          */
-        permutation("", "ABCD");
+        permutation("", "1234");
     }
     public static void permutation(String st1, String st2){
         int j = st2.length();
@@ -24,6 +24,9 @@ public class Permutation {
                 permutation(st1 + st2.charAt(i), st2.substring(0, i) + st2.substring(i+1,j));
             }
         }
+
+
+
     }
 
 

@@ -47,7 +47,7 @@ public class XmlReader {
 						student.lastName = content;
 						break;
 					case "score":
-						student.score = convertIntToChar(content);  
+						student.score = Integer.parseInt(content);
 						break;	
 					}
 				}

@@ -37,8 +37,8 @@ public class ProcessStudentInfo {
 				String pathSelenium  = System.getProperty("user.dir") +"/src/parser/selenium.xml";
 				String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
 				String tag = "id";
-                //Create ConnectToSqlDB Object
-				ConnectToMongoDB connectToMongoDB = new ConnectToMongoDB();
+
+
 				//Declare a Map with List<String> into it.
 				Map<String,List<Student>> list = new LinkedHashMap<String,List<Student>>();
 				
@@ -52,8 +52,6 @@ public class ProcessStudentInfo {
 				XmlReader xmlReader = new XmlReader();
 				
 				
-				//Parse Data using parseData method and then store data into Selenium ArrayList.
-				seleniumStudents = xmlReader.parseData(tag, pathSelenium);
 
 				//Parse Data using parseData method and then store data into Selenium ArrayList.
 				seleniumStudents = xmlReader.parseData(tag, pathSelenium);
@@ -79,8 +77,8 @@ public class ProcessStudentInfo {
 						String id = s.getId();
 						String firstname = s.getFirstName();
 						String lastname = s.getLastName();
-						String grade = s.getScore();
-						System.out.println("Students (id=" + id + ") '" + firstname + "'  '" + lastname + "'\t\t\tgrade= " + grade);
+						int score = s.getScore();
+						System.out.println("Students (id=" + id + ") '" + firstname + "'  '" + lastname + "'\t\t\tscore= " + score);
 					}
 				}
 

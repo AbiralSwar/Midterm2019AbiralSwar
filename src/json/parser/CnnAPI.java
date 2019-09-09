@@ -101,7 +101,7 @@ public class CnnAPI {
 
         connectToSqlDB.insertDataFromHelpListToSqlTable(newsList, "CNNAPI","source");
         // print form data base to console
-        try {List<CnnUtil> st1List = connectToSqlDB.newReadListFromSqlDB(newsList, "CNNApi");
+        try {List<CnnUtil> st1List = connectToSqlDB.newReadListFromSqlDB(newsList, "CNNAPI");
 
         for (CnnUtil entry : st1List) {
             System.out.println(entry.getSource() + " " + entry.getAuthor() + " " + entry.getTitle() + " " + entry.getDescription() + " " + entry.getUrl() + " " + entry.getUrlToImage() + " " + entry.getPublisherAt() + " " + entry.getContent());
