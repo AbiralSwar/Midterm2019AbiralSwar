@@ -46,9 +46,7 @@ public class Sort {
             }
             list[j] = temp;
         }
-        for (i = 0; i < list.length; i++) {
-            System.out.println(list[i]+ " ");
-        }
+
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
@@ -73,10 +71,7 @@ public class Sort {
                 }
             }
         }
-        for (int i=0; i<list.length; i++)
-        {
-            System.out.println(list[i]+" ");
-        }
+
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;
@@ -360,21 +355,31 @@ public class Sort {
 
     }
     public int [] shellSort(int [] array){
-        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
-        int n = list.length;
-        for (int i = n / 2; i > 0; i /= 2) {
-            for (int j = i; i < n; i += 1) {
-                int temp = list[i];
-                int a;
-                for (a = i; a >= i && list[a - i] > temp; a -= i) {
-                    list[j] = list[j - i];
-                }
-                list[a] = temp;
-            }
-        }
 
+
+        final long startTime = System.currentTimeMillis();
+        int inner_loop, outer_loop;
+        int temp;
+        int h = 1;
+        while(h <= array.length/3)
+            h = h*3 + 1;
+        while(h>0)
+        {
+            for(outer_loop=h; outer_loop<array.length; outer_loop++)
+            {
+                temp = list[outer_loop];
+                inner_loop = outer_loop;
+                while(inner_loop > h-1 && list[inner_loop-h] >= temp)
+                {
+                    list[inner_loop] = list[inner_loop-h];
+                    inner_loop -= h;
+                }
+                list[inner_loop] = temp;
+            }
+            h = (h-1) / 3;
+        }
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
         this.executionTime = executionTime;

@@ -22,18 +22,21 @@ public class Numbers {
 
 	public static void main(String[] args) throws Exception {
 		
-		int [] num = new int[1000000];
+		int [] num = new int[1000];
 		//int [] num = new int[4];
 		storeRandomNumbers(num);
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+
+
 		//Selection Sort
 		Sort algo = new Sort();
+
 		algo.selectionSort(num);
 		long selectionSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " milli sec");
         connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
         List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
-        printValue(numbers);
+        //printValue(numbers);
 		int n = num.length;
 		randomize (num, n);
 		//Insertion Sort
@@ -95,6 +98,24 @@ public class Numbers {
 
 
 		//Come to conclusion about which Sorting Algo is better in given data set.
+        ///I did sorting for 1000 random numbers. Based on the execution time Merge Sort/Shell Sort is better.
+		//Below are the results
+
+		//Total Execution Time of 1000 numbers in Selection Sort take: 3 milli sec
+
+		//Total Execution Time of 1000 numbers in Insertion Sort take: 4 milli sec
+
+		//Total Execution Time of 1000 numbers in Bubble Sort take: 6 milli sec
+
+		//Total Execution Time of 1000 numbers in Merge Sort take: 1 milli sec
+
+		//Total Execution Time of 1000 numbers in Bucket Sort take: 8 milli sec
+
+		//Total Execution Time of 1000 numbers in Heap Sort take: 9 milli sec
+
+		//Total Execution Time of 1000 numbers in Quick Sort take: 3 milli sec
+
+		//Total Execution Time of 1000 numbers in Shell Sort take: 1 milli sec
 
 	}
 

@@ -7,8 +7,6 @@ A. A programming language is a computer language engineered to create a standard
   communication process.
 
 
-
-
 What jdk contains or composed of and define each components?
 A. The following components of JAVA are as follows:
 
@@ -226,43 +224,210 @@ A. Yes, JVM is a independent platform
 
 
 What version of java are you using?
-
+A. JDK version 11.0.1.
 
 
 What is JAR stand for ?
-
+A. JAR stands for Java archive.
 
 
 What is the difference between JDK and JVM?
-What is the difference between JVM and JRE?
-What is compile time and run time?
-What is heap?
-How java manage it's memory?
-What is the difference between String, StringBuffer and StringBuilder?
-What is Singleton class?
-What is Serialization and Deserialization?
-when to use transient variable in java?
-Difference between while and do..while loop?
-What is Enum?
-What is Iterator?
-Which one will take more memory, an int or Integer?
-Why is String Immutable in Java?
-What is constructor chaining in Java?
-The difference between Serial and Parallel Garbage Collector?
-What is JIT stands for?
-Explain Java Heap space and Garbage collection?
-Can you guarantee the garbage collection process?
-What is the difference between stack and heap in Java?
-What is reflection in java and why is it useful?
-what is multithreading in java?
-What is the use of synchronization in Java?
-What is Framework?
-What are the testing Framework available in java?
-Difference between jUnit and testNG?
-What are the dependencies for this project?
-what is dependency injection in java?
-What is static binding and dynamic binding?
+A. JDK is an acronym for Java Development Kit. The Java Development Kit (JDK) is a software development environment
+   which is used to develop Java applications and applets. It physically exists. It contains JRE + development tools.
 
+   JVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it doesn't physically
+   exist. It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also
+   run those programs which are written in other languages and compiled to Java bytecode.
+
+
+What is the difference between JVM and JRE?
+A. JVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it doesn't physically
+   exist.It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also
+   run those programs which are written in other languages and compiled to Java bytecode.
+
+   JRE is an acronym for Java Runtime Environment. It is also written as Java RTE. The Java Runtime Environment is a set
+   of software tools which are used for developing Java applications. It is used to provide the runtime environment.
+   It is the implementation of JVM. It physically exists. It contains a set of libraries + other files that JVM uses at
+   runtime.
+
+
+What is compile time and run time?
+A. The source code must be compiled into machine code in order to become and executable program. This compilation
+   process is referred to as compile time.
+
+   A compiled program can be opened and run by a user. When an application is running, it is called runtime.
+
+
+What is heap?
+A. The heap is the run-time data area from which memory for all class instances and arrays is allocated. Heap is the
+   place where all objects stays during run time. It is part of RAM.
+
+
+How java manage it's memory?
+A. Java manages it's memory by the JVM. The JVM loads the code verifies the code, executes the code manages memory
+   this includes allocating memory from the Operating System.
+
+
+What is the difference between String, StringBuffer and StringBuilder?
+A. String is immutable, if you try to alter their values, another object gets created, whereas
+   StringBuffer and StringBuilder are mutable so they can change their values.StringBuffer methods are synchronized
+   while StringBuilder methods are non-synchronized, it means that for thread-safe operations you must choose
+   StringBuffer class instead of StringBuilder.
+
+
+What is Singleton class?
+A. The purpose of singleton is to control object creation by keeping private constructor. Singleton pattern helps us to
+   keep only one instance of a class at any time.We can make constructor as private.
+   So that user can not create an object from outside of the class.
+
+
+What is Serialization and Deserialization?
+A. Serialization: It is a process of converting an object into a sequence of bytes which can be persisted to a disk or
+   database or can be sent through streams.
+   Deserialization: The reverse process of creating object from sequence of bytes is called deserialization.
+
+
+when to use transient variable in java?
+A. If we want to serialize some object that has a field of that type, then we'll have to mark those fields as transient.
+
+
+Difference between while and do..while loop?
+A. In do...while loop, what ever the condition for loop is system will execute the do statement first and then will
+execute the while condition whereas, in while loop java will execute the only while condition accordingly.
+
+
+What is Enum?
+A. Enum in java is a data type that contains fixed set of constants.
+
+
+What is Iterator?
+A. An iterator is an interface that is used in place of Enumerations in the Java Collection Framework.
+
+
+Which one will take more memory, an int or Integer?
+A. Integer will take more memory.
+
+
+Why is String Immutable in Java?
+A. String is Immutable because can not be modified.
+
+
+What is constructor chaining in Java?
+A. Calling another constructor in the same class from another constructor is called constructor chaining.
+   By using this() we can call another constructor in the same class.
+
+
+The difference between Serial and Parallel Garbage Collector?
+A. The serial collector uses a single thread to perform all garbage collection work, which is more efficient
+   because of no communication overhead between threads. It is best suited to single processor machines.
+
+
+What is JIT stands for?
+A. The Just-In-Time (JIT) compiler is a component of the Java™ Runtime Environment that improves the performance of Java
+   applications at run time. The JIT compiler helps improve the performance of Java programs by compiling bytecodes into
+   native machine code at run time. The JIT compiler is enabled by default, and is activated when a Java method is
+   called.
+
+
+Explain Java Heap space and Garbage collection?
+A. At run-time the Java instances are stored in the heap memory area. When an object is not referenced
+   anymore it becomes eligible for removal from heap memory.During garbage collection process, those objects are removed
+   from heap memory and the space is reclaimed.
+   Heap memory has three major areas
+    1. Young Generation
+       a. Eden Space (any instance enters the runtime memory area through eden)
+       b. S0 Survivor Space (older instances moved from eden to S0)
+       c. S1 Survivor Space (older instances moved from S0 to S1)
+    2. Old Generation (instances promoted from S1 to tenured)
+    3. Permanent Generation (contains meta information like class, method detail)
+
+   Garbage Connection:Java garbage collection is an automatic process to manage the runtime memory used by programs.
+   Garbage connection of JAVA application is done by Garbage collector.
+   A garbage collector performs automatic dynamic memory management through the following operations:
+    1. It allocates from and gives back memory to the operating system.
+    2. Allocate memory to the application as it requests it.
+    3. Determines which parts of that memory is still in use by the application.
+    4. Reclaims the unused memory for reuse by the application.
+      An object is considered garbage and its memory can be reused by the VM when it can no longer be reached
+      from any reference of any other live object in the running program.
+
+
+Can you guarantee the garbage collection process?
+A. No, it is not guaranteed process. Reason: Being an automatic process, programmers need not initiate the garbage
+   collection process explicitly in the code. System.gc() and Runtime.gc() are hooks to request the JVM to initiate
+   the garbage collection process.
+
+
+
+What is the difference between stack and heap in Java?
+A. Heap and Stack are part of JVM but they are used for different purposes.
+      Differences are as follows:
+   1. Size: Heap space in Java is much bigger than the Stack memory.
+   2. Resizing: JVM allows to resize both heap and stack, but need to use different JVM flags for that.
+   3. Usage: Heap memory is used to store objects, no mater where u created that object. Stack memory is used to
+     store primitive variables and reference variables, method frames and call stack.
+   4. Visibility: Heap memory is shared by all threads hence it is also known as the main memory but stack memory
+      is local to threads and local variable created there was not visible to others.
+   5. Order: Heap is a large memory area where objects can be created and stored in any order but Stack memory
+      is structured as Stack data structure i.e. LIFO where method calls are stored as last in first out order.
+   6. Error Type: When heap and stack memory are filled different error are being generated.
+
+
+
+What is reflection in java and why is it useful?
+A. Java Reflection is a process of examining or modifying the run time behavior of a class at run time.
+   The Reflection API is mainly used in:
+   IDE (Integrated Development Environment) e.g. Eclipse, MyEclipse, NetBeans etc.
+   Debugger
+   Test Tools etc.
+
+what is multithreading in java?
+A. Multithreading in java is a process of executing multiple threads simultaneously.
+   A thread is a lightweight sub-process, the smallest unit of processing. Multiprocessing and multithreading, both are
+   used to achieve multitasking.
+
+
+What is the use of synchronization in Java?
+A. Synchronization in java is the capability to control the access of multiple threads to any shared resource.
+   Java Synchronization is better option where we want to allow only one thread to access the shared resource.
+
+
+What is Framework?
+A. A framework, or software framework, is a platform for developing software applications. It provides a foundation on
+which software developers can build programs for a specific platform. For example, a framework may include predefined
+classes and functions that can be used to process input, manage hardware devices, and interact with system software.
+
+
+What are the testing Framework available in java?
+A. testNG and jUnit
+
+
+Difference between jUnit and testNG?
+A. TestNG uses test groups, which can categorize tests according to features such as run times.
+   JUnit and TestNG are similar on the surface. But whereas JUnit is designed to hone in on a unit of code whereas,
+   TestNG is meant for high-level testing.
+
+
+What are the dependencies for this project?
+A. gson-2.6.2.jar
+   java-jason.jar
+   javax.jason-1.0.jar
+   mongo-java-driver-3.4.0.jar
+   mysql-connector-java-8.0.13.jar
+   testng-6.8.7.jar
+
+
+what is dependency injection in java?
+A. Dependency injection is a concept valid for any programming language. The general concept behind dependency injection
+   is called Inversion of Control. According to this concept a class should not configure its dependencies statically but
+   should be configured from the outside.
+
+
+What is static binding and dynamic binding?
+A. Connecting a method call to the method body is known as binding.
+  There are two types of binding
+  Static Binding (also known as Early Binding).
+  Dynamic Binding (also known as Late Binding).
 
 
 
